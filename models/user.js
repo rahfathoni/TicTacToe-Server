@@ -5,10 +5,25 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {}
 
   User.init({
-    username: DataTypes.STRING,
-    room: DataTypes.INTEGER,
-    row: DataTypes.INTEGER,
-    column: DataTypes.INTEGER
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate : {
+        notEmpty: {
+          args: true,
+          msg: `Username must be filled`
+        }
+      }
+    },
+    room: {
+      type: DataTypes.INTEGER
+    },
+    row: {
+      type: DataTypes.INTEGER
+    } ,
+    column: {
+      type:DataTypes.INTEGER
+    }
   }, {
     sequelize,
     modelName: 'User',
