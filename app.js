@@ -14,6 +14,7 @@ app.use(express.json())
 
 let users = [];
 let moves = [];
+let messages=[];
 
 io.on('connection', (socket) => {
     console.log('User Connected')
@@ -30,6 +31,16 @@ io.on('connection', (socket) => {
     socket.on('move', (data) => {
         moves.push()
     })
+    socket.on('send-message', function(data) {
+        console.log('entered server, received', data)
+        messages.push(data)
+        // if (messages.length > 7){
+        //     messages.shift()
+        // }
+        console.log(messages)
+        io.emit('send-message', messages)
+    })
+
 })
 
 server.listen(PORT, () => {
