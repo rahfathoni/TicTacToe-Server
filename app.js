@@ -6,11 +6,13 @@ const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
 const io = require('socket.io')(server)
 // const Controller = require('./controllers/controller');
-const { User } = require('./models/index');
+// const { User } = require('./models/index');
+const router = require('./routes/index')
 
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json())
+app.use(router)
 
 let users = [];
 let moves = [];
