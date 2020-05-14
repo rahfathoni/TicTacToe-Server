@@ -21,6 +21,21 @@ class Controller {
             })
     }
 
+    // router.get('/data', Controller.fetchUser);
+    static fetchUser (req, res) {
+        User.findAll()
+            .then(data => {
+                res.status(201).json({
+                    data
+                })
+            })
+            .catch(err => {
+                res.status(500).json({
+                    message: err.errors[0].message
+                })
+            })
+    }
+
 }
 
 module.exports = Controller
