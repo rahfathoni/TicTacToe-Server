@@ -2,7 +2,7 @@ const { User } = require('../models/index');
 
 class Controller {
     // router.post('/user', Controller.createUser);
-    static createUser (res, req) {
+    static createUser (req, res) {
         let { username } = req.body
         let input = {
             username,
@@ -10,13 +10,13 @@ class Controller {
         }
         User.create(input)
             .then(data => {
-                res.send(201).json({
+                res.status(201).json({
                     user: data
                 })
             })
             .catch(err => {
-                res.send(500).json({
-                    message: err.message
+                res.status(500).json({
+                    message: err.errors[0].message
                 })
             })
     }
