@@ -7,6 +7,7 @@ const app = express();
 const cors = require('cors');
 const http = require('http');
 const routes = require("./routes");
+const errorHandler = require("./middlewares/errorhandler.js");
 const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
 const io = require('socket.io')(server)
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json())
 app.use("/", routes);
+app.use(errorHandler);
 
 let users = [];
 let moves = [];
