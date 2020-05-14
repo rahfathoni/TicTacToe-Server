@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     row: {
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING
     } ,
     column: {
-      type:DataTypes.INTEGER
+      type:DataTypes.STRING
     }
   }, {
     sequelize,

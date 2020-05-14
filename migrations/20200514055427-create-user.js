@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       row: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       column: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
