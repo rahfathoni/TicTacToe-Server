@@ -1,18 +1,24 @@
+if(process.env.NODE_ENV == 'development'){
+    require('dotenv').config();
+  }
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const http = require('http');
+const routes = require("./routes");
+const errorHandler = require("./middlewares/errorhandler.js");
 const PORT = process.env.PORT || 3000;
 const server = http.createServer(app);
 const io = require('socket.io')(server)
-// const Controller = require('./controllers/controller');
+// const Controller = require('./controllers/controlleruser');
 // const { User } = require('./models/index');
-const router = require('./routes/index')
 
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json())
-app.use(router)
+app.use("/", routes);
+app.use(errorHandler);
 
 let users = [];
 let moves = [];
